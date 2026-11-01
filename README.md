@@ -185,6 +185,20 @@ Windows x86 → NSIS .exe + .msi
    是付费镜像，公开 runner 里没有。
 3. **release** —— 汇总各平台产物，创建 draft release，确认后再手动发布。
 
+### 安装
+
+macOS 版没有签名 / 公证，从 release 下载后首次打开会被 Gatekeeper 拦下。
+两种绕过方式（任选其一）：
+
+```bash
+xattr -dr com.apple.quarantine /Applications/拾遗.app
+```
+
+或者在 Finder 里右键点应用 →「打开」→ 再确认一次「打开」。
+
+Windows 的 NSIS 安装包和 MSI 未签名，SmartScreen 会提示「未知发布者」，
+点「更多信息」→「仍要运行」即可。
+
 发布物文件名带架构（`x64` / `x86` / `aarch64`），不同平台不会重名：
 
 ```
