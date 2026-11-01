@@ -149,7 +149,7 @@ npm run tauri build    # 打包
 产物在 `src-tauri/target/release/bundle/`：
 
 - macOS：`拾遗.app`、`拾遗_<version>_aarch64.dmg`
-- Windows：`拾遗_<version>_x64-setup.exe`、`拾遗_<version>_x64_en-US.msi`
+- Windows：`拾遗_<version>_x64-setup.exe`、`拾遗_<version>_x64_zh-CN.msi`
 
 ### 图标
 
@@ -188,11 +188,20 @@ Windows x86 → NSIS .exe + .msi
 发布物文件名带架构（`x64` / `x86` / `aarch64`），不同平台不会重名：
 
 ```
-macos-arm64.zip        macos-x64.zip
-拾遗_0.1.0_aarch64.dmg 拾遗_0.1.0_x64.dmg
-拾遗_0.1.0_x64-setup.exe  拾遗_0.1.0_x86-setup.exe
-拾遗_0.1.0_x64_en-US.msi  拾遗_0.1.0_x86_en-US.msi
+shiyi-macos-arm64.zip        shiyi-macos-x64.zip
+shiyi_0.1.0_aarch64.dmg      shiyi_0.1.0_x64.dmg
+shiyi_0.1.0_x64-setup.exe    shiyi_0.1.0_x86-setup.exe
+shiyi_0.1.0_x64_zh-CN.msi    shiyi_0.1.0_x86_zh-CN.msi
 ```
+
+GitHub 上传 release 资产时会剥掉文件名里的非 ASCII 字符，所以发布前
+统一把「拾遗_」换成 `shiyi_`。而**本地** `npx tauri build` 出来的仍是
+中文名（`拾遗.app` / `拾遗_0.1.0_aarch64.dmg`），只是发出去的那份改了名。
+
+Windows 的 MSI 用 WiX 打包，默认代码页 1252 装不下中文，`productName`
+是「拾遗」时 `light.exe` 会报 `LGHT0311`，所以
+`tauri.conf.json` 里设了 `bundle.windows.wix.language: "zh-CN"`
+（对应代码页 936）。
 
 ## 技术栈
 

@@ -158,7 +158,18 @@ jobs:
           find dist -type f \( -name '*.zip' -o -name '*.dmg' \
                             -o -name '*.exe' -o -name '*.msi' \) \
             -exec cp {} packaged/ \;
-          ls -la packaged/
+          # GitHub 上传 release 资产时会把文件名里的非 ASCII 字符剥掉，
+          # 「拾遗_0.1.0_x64.dmg」会变成「_0.1.0_x64.dmg」。所以发布前统一
+          # 换成 ASCII 前缀；本地打包产物仍是中文名，只是发出去的叫 shiyi_*。
+          cd packaged
+          for f in *; do
+            case "$f" in
+              拾遗_*) mv -- "$f" "shiyi_${f#拾遗_}" ;;
+            esac
+          done
+          mv -f macos-arm64.zip shiyi-macos-arm64.zip
+          mv -f macos-x64.zip shiyi-macos-x64.zip
+          ls -la
 
       - uses: softprops/action-gh-release@v2
         with:
