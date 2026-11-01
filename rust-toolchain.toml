@@ -1,0 +1,5 @@
+# Tauri 2.12 / muda 0.20 需要 rustc ≥ 1.90。
+# 写进仓库里，`cargo test --manifest-path src-tauri/Cargo.toml`（在仓库根目录跑）
+# 和 CI 都会用同一套工具链，不会因为当前目录不同而落到旧版本上。
+[toolchain]
+channel = "stable"

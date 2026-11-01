@@ -1,0 +1,88 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "拾遗",
+  "mainBinaryName": "shiyi",
+  "version": "0.1.0",
+  "identifier": "site.hancic.shiyi",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "label": "card",
+        "title": "拾遗",
+        "width": 380,
+        "height": 200,
+        "resizable": false,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "visible": false,
+        "focus": false,
+        "focusable": false,
+        "skipTaskbar": true,
+        "visibleOnAllWorkspaces": true,
+        "shadow": false
+      },
+      {
+        "label": "settings",
+        "title": "拾遗设置",
+        "width": 440,
+        "height": 560,
+        "resizable": false,
+        "visible": false,
+        "center": true
+      },
+      {
+        "label": "favorites",
+        "title": "拾遗 · 收藏夹",
+        "width": 460,
+        "height": 560,
+        "resizable": false,
+        "visible": false,
+        "center": true
+      },
+      {
+        "label": "history",
+        "title": "拾遗 · 历史记录",
+        "width": 460,
+        "height": 560,
+        "resizable": false,
+        "visible": false,
+        "center": true
+      },
+      {
+        "label": "library",
+        "title": "拾遗 · 书库",
+        "width": 440,
+        "height": 520,
+        "resizable": false,
+        "visible": false,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["dmg", "app", "nsis", "msi"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "copyright": "拾遗 ShiYi",
+    "category": "Utility",
+    "shortDescription": "经典语录菜单栏小工具",
+    "longDescription": "驻留菜单栏 / 托盘的经典语录小工具：定时随机弹出《道德经》《论语》《庄子》《孟子》《传习录》语录卡片，支持收藏、历史、主题与全局快捷键。"
+  }
+}

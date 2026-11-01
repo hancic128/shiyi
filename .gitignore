@@ -1,0 +1,20 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+
+src-tauri/target
+src-tauri/gen
+
+# macOS AppleDouble：非 macOS 上解压 macOS 打包的产物时会出现，
+# 内容不是有效 UTF-8，Tauri 的 build.rs 读 capabilities/ 会直接失败。
+._*
+
+# 本地测试/会话产物
+.playwright-mcp
+.claude/settings.local.json
+__pycache__/
+*.pyc

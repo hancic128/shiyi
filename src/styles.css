@@ -1,0 +1,106 @@
+:root {
+  --fg: #1f1f1f;
+  --fg-muted: #6b6b6b;
+  --bg: #fbfbfa;
+  --bg-elevated: #ffffff;
+  --border: rgba(0, 0, 0, 0.10);
+  --accent: #9e2924;
+  --accent-soft: rgba(158, 41, 36, 0.10);
+  --radius: 8px;
+  --font-serif: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei",
+    "Segoe UI", Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #e8e6e1;
+    --fg-muted: #9a9a94;
+    --bg: #1c1c1e;
+    --bg-elevated: #26262a;
+    --border: rgba(255, 255, 255, 0.12);
+    --accent: #c9706b;
+    --accent-soft: rgba(201, 112, 107, 0.16);
+  }
+}
+
+/* 用户在设置里手动选了外观，覆盖系统偏好。
+   卡片主题有自己的配色，不受这里的变量影响。 */
+:root[data-appearance='dark'] {
+  --fg: #e8e6e1;
+  --fg-muted: #9a9a94;
+  --bg: #1c1c1e;
+  --bg-elevated: #26262a;
+  --border: rgba(255, 255, 255, 0.12);
+  --accent: #c9706b;
+  --accent-soft: rgba(201, 112, 107, 0.16);
+}
+
+:root[data-appearance='light'] {
+  --fg: #1f1f1f;
+  --fg-muted: #6b6b6b;
+  --bg: #fbfbfa;
+  --bg-elevated: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --accent: #9e2924;
+  --accent-soft: rgba(158, 41, 36, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: var(--fg);
+  background: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  height: 100%;
+}
+
+/* 应用级滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.32);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.5);
+}
+
+/* 通用按钮 */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* 表单控件 */
+input[type="number"],
+select {
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--fg);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+input[type="range"] {
+  accent-color: var(--accent);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}

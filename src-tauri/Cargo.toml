@@ -1,0 +1,46 @@
+[package]
+name = "shiyi"
+version = "0.1.0"
+description = "拾遗 · 经典语录菜单栏小工具"
+authors = ["shark"]
+edition = "2021"
+rust-version = "1.90"
+
+[lib]
+name = "shiyi_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
+tauri-plugin-global-shortcut = "2"
+tauri-plugin-autostart = "2"
+tauri-plugin-store = "2"
+tauri-plugin-clipboard-manager = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rand = "0.8"
+chrono = { version = "0.4", features = ["serde"] }
+tauri-plugin-dialog = "2.8.4"
+tauri-plugin-fs = "2.7.1"
+
+# macOS 专用：让卡片窗口浮在全屏应用之上（NSWindowCollectionBehaviorFullScreenAuxiliary）。
+# tao 的 `set_visible_on_all_workspaces` 只设 CanJoinAllSpaces，够不到全屏 space，
+# 所以这里直接操作 NSWindow。
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.6"
+objc2-app-kit = { version = "0.3", features = ["NSWindow"] }
+
+[features]
+# This feature is used for production builds where `devUrl` points to the filesystem
+# DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true
