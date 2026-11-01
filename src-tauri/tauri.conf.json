@@ -80,6 +80,11 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
+    "windows": {
+      "wix": {
+        "language": "zh-CN"
+      }
+    },
     "copyright": "拾遗 ShiYi",
     "category": "Utility",
     "shortDescription": "经典语录菜单栏小工具",
